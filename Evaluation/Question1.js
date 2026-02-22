@@ -8,6 +8,7 @@ function createBankAccount(){
         }
         balance += amount;
         transactions.push({type: "deposit", amount : amount});
+        return `Amount ${amount} deposited`;
     }
 
     function withdraw(amount){
@@ -19,6 +20,7 @@ function createBankAccount(){
         }
         balance -= amount;
         transactions.push({type: "withdraw", amount : amount});
+        return `Amount ${amount} withdrawn`;
     }
     function getBalance(){
         return balance;
@@ -29,4 +31,13 @@ function createBankAccount(){
 
     return {deposit, withdraw, getBalance, getTransactionHistory};
 }
+
+
+let account = createBankAccount();
+console.log(account.deposit(10000));
+console.log(account.withdraw(10000));
+console.log(account.withdraw(10000));
+console.log(account.getBalance(10000));
+console.log(account.getTransactionHistory(10000));
+
 

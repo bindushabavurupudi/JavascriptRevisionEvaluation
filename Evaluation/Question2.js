@@ -1,18 +1,14 @@
-function rateLimiter(limit, interval){
+function rateLimiter(limit, interval) {
     let counter = 0;
-    let timer = null;
-    return function (){
-        if(counter < limit){
-             counter++;
-             if(!timer){
-                timer = setTimeout(()=>{
-                    timer = null;
-                    counter = 0;
-                }, interval);
-             }
-             return "Call Allowed"
-            }
-            else return "Call limit exceeded";
+    return function () {
+        if (counter < limit) {
+            counter++;
+            setTimeout(() => {
+                counter = 0;
+            }, interval);
+            return "Call Allowed"
+        }
+        else return "Call limit exceeded";
     }
 
 }
